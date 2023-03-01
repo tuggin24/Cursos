@@ -1,0 +1,17 @@
+body{
+    background: mediumpurple;
+}
+
+h1{
+    color: aquamarine;
+    text-align: center;
+}
+
+label{
+    color: white;
+}
+
+.listas{
+    color: orange;
+    font-weight: bold;
+}

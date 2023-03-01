@@ -1,0 +1,46 @@
+.etiquetas{
+    color: #FF9900;
+}
+
+.titulo{
+    color: #FF5A09;
+    font-weight: bold;
+}
+
+body{
+    background: black;
+}
+
+button{
+    background: #F95700;
+    padding: 4px 10px;
+    color: #FFF;
+    border: #c30 1px solid;
+}
+
+.prueba{
+    align-items: center;
+    vertical-align: middle;
+    align-content: center;
+}
+
+.padre{
+    display: flex;
+}
+
+.padre2{
+    display: inline-block;
+    text-align: right;
+    
+}
+.padre3{
+    padding: 0.2em;
+    position: relative;
+}
+.padre4{
+    display: flex;
+    flex: 1 1 200px;
+    text-align: end;
+    width: 1000px;
+    height: 150px;
+}

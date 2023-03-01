@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Frames en HTML</title>
+    </head>
+    <!--Frame externo-->
+    <!--Creamos un frame externo de 2 columnas-->
+    <frameset cols="25%,*" frameborder="0" framespacing="0" border="0">
+        <!--Frame Izquierda-->
+        <frame src="navegacion.html" name="navegacion"><!--Frame derecha, es otro frameset-->
+        <!--tiene 2 renglones este frame-->
+        <frameset rows="30%,*">
+            <!--Frame superior-->
+            <frame src="titulo.html" name="titulo" scrolling="no">
+            <!--Frame inferior-->
+            <frame  src="contenidoInicial.html" name="contenido">
+        </frameset>
+        <noframes>
+            Esta es una pagina que no pudo mostrar los frames :c
+        </noframes>
+    </frameset>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <script type="text/javascript" src="funciones.js"></script>
+        <title>Laboratorio manejo de usuarios</title>
+    </header>
+    <body>
+        <h1>Manejo de Usuarios</h1>
+        <label>Agregar un usuario (dar enter)</label>
+        <input type="text" width="200" name="usuario" onchange="agregarUsuario(this)">
+        <br>
+        <div id="usuarios" class="listas">
+
+        </div>
+        <br>
+        <br>
+        <label>Escribe el nombre de usuario para buscar su posición (dar enter)</label>
+        <input type="text" width="200" name="buscar" onchange="buscarUsuarios(this)">
+        <div id="busqueda" class="listas">
+
+        </div>
+    </body>
+</html>
