@@ -38,7 +38,7 @@ class Empleado extends Persona{
     static contadorEmpleado = 0;
     constructor(nombre,apellido,edad,sueldo){
         super(nombre,apellido,edad);
-        this._idEmpleado = Empleado.contadorEmpleado;
+        this._idEmpleado = ++Empleado.contadorEmpleado;
         this._sueldo = sueldo;
     }
     get IdEmpleado(){
@@ -59,7 +59,7 @@ class Cliente extends Persona{
     static contadorCliente = 0;
     constructor(nombre,apellido,edad){
         super(nombre,apellido,edad);
-        this._idCliente = Cliente.contadorCliente;
+        this._idCliente = ++Cliente.contadorCliente;
         this._fechaRegistro = new Date();
     }
     get IdCliente(){
