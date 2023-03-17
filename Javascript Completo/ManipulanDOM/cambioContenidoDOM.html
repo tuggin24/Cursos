@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo" onclick="cambiarTexto(this);this.style.color = 'green'">Manejo DOM con JS</h1>
+    <button type="submit" id="btn1" onclick="mostrarValores()">Mostrar</button>
+    <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png">
+    <script>
+        //Modificamos el estilo de un elemto html
+        document.getElementById('titulo').style.color = 'blue';
+        function mostrarValores(){
+            //Modificamos el atributo source de un elemento html
+            document.getElementById('imagen').src = 'http://globalmentoring.com.mx/imagenes/html5.png';
+            //Modificamos el estilo de un elemto html
+            document.getElementById('titulo').style.color = 'red';
+        }
+        //Se utiliza la funcion enviado el valor de "this" que es el elemento HTML
+        function cambiarTexto(dato){
+            console.log(dato);
+            dato.innerHTML = 'Titulo nuevo';
+        }
+    </script>
+</body>
+</html>

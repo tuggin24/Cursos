@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejemplo DOM con JS</title>
+        <style>
+            .azul{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="titulo" class="azul">Ejemplo DOM con JS</h1>
+        <p id="parrafo" class="azul">pruebas</p>
+        <p id="parrafo2" class="azul">pruebas</p>
+        <script type="text/javascript" src="/ManipulanDOM/funciones.js"></script>
+        <script>
+            //Traemos los elementos por su etiqueta: getElementsByTagName
+            //let elementos = document.getElementsByTagName('p');//'p' tiene que ser una etiqueta valida
+
+            //Traemos a los elemento por su clase : getElementsByClassName
+            //let elementos = document.getElementsByClassName('azul');
+
+            //Especificamos la clase y el elmento html que queremos recuperar: querySelectorAll('h1.azul')
+            let elementos = document.querySelectorAll('p.azul');
+
+            console.log(`Numero de elementos ${elementos.length}`);
+            for(let i = 0; i < elementos.length; i++){
+                console.log(`Elementos: ${elementos[i].innerHTML}`);
+            }
+            for (let i of elementos){
+                console.log(`Elementos desde otro for: ${i.innerHTML}`);
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo Formulario</title>
+</head>
+<body>
+    <form id="form">
+        Nombre: <input type="text" name="nombre" value="Juan">
+        <br>
+        Apellido: <input type="text" name="apellido" value="Perez">
+        <br>
+    </form>
+    <button type="submit" id="btn1" onclick="mostrarValores()">Mostrar</button>
+    <div id="valores">
+
+    </div>
+    <script>
+        function mostrarValores(){
+            let form = document.forms['form'];
+            let texto = '';
+            let nombre = form['nombre'];
+            let apellido = form['apellido'];
+            texto = `Nombre Individual: ${nombre.value}<br> Apellido Individual: ${apellido.value}<br>`;
+            for(let elementos of form){
+                texto += `Nombre: ${elementos.value}<br>`;
+            }
+            console.log("Elementos: ",texto);
+            let div = document.getElementById('valores');
+            div.innerHTML = texto;
+        }
+    </script>
+</body>
+</html>
