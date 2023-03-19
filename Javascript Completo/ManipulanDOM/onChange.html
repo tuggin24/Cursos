@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>OnChange</title>
+</head>
+<body>
+    <h1>Manejo del evento OnLoad</h1>
+    <br>
+    Nombre: <input type="text" onchange="cambioNombre(this)">
+    <script>
+        function cambioNombre(nombre){
+            nombre.value = nombre.value.toUpperCase();
+        }
+    </script>
+</body>
+</html>

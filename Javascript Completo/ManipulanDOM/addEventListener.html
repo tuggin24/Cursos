@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>On focus y on blur</title>
+</head>
+<body>
+    <h1">On focus y on blur</h1>
+    <br>
+    Nombre: <input type="text" id="nombre">
+    <br><br>
+    Apellido: <input type="text" id="apellido">
+    <script>
+        document.getElementById('nombre').addEventListener( 'focus', (evento) => { evento.target.style.background = 'purple' } );
+        document.getElementById('nombre').addEventListener( 'blur', (evento) => { evento.target.style.background = 'green' } );
+
+        document.getElementById('apellido').addEventListener( 'focus', cambiar );
+        document.getElementById('apellido').addEventListener( 'blur', regresar );
+
+        function cambiar(evento){
+            let componente = evento.target;
+            componente.style.background = 'yellow';
+        }
+
+        function regresar(evento){
+            let componente = evento.target;
+            componente.style.background = 'white';
+        }
+    </script>
+</body>
+</html>

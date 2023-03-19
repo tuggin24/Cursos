@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>On focus y on blur</title>
+</head>
+<body>
+    <form id="form">
+        <h1">On focus y on blur</h1>
+        <br>
+        Nombre: <input type="text" id="nombre">
+        <br><br>
+        Apellido: <input type="text" id="apellido">
+    </form>
+    
+    <script>
+        let form = document.getElementById('form');
+        form.addEventListener( 'focus', (evento) => { evento.target.style.background = 'pink' }, true );
+        form.addEventListener( 'blur', (evento) => { evento.target.style.background = 'orange' }, true );
+    </script>
+</body>
+</html>

@@ -7,6 +7,7 @@
     <h1 id="titulo" onclick="cambiarTexto(this);this.style.color = 'green'">Manejo DOM con JS</h1>
     <button type="submit" id="btn1" onclick="mostrarValores()">Mostrar</button>
     <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png">
+    <div id="div1"></div>
     <script>
         //Modificamos el estilo de un elemto html
         document.getElementById('titulo').style.color = 'blue';
@@ -20,6 +21,12 @@
         function cambiarTexto(dato){
             console.log(dato);
             dato.innerHTML = 'Titulo nuevo';
+        }
+
+        //Se asigna el evento onclick desde js
+        document.getElementById('titulo').onclick = cambiarTexto2;
+        function cambiarTexto2(){
+            document.getElementById('div1').innerHTML = "Nuevo contenido";
         }
     </script>
 </body>

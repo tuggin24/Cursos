@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>On mouse Over y Out y Down y Up</title>
+</head>
+<body>
+    <h1 onmouseover="rojo(this)" onmouseout="azul(this)" onmousedown="verde(this)" onmouseup="amarillo(this)" onclick="morado(this)">On mouse Over y Out</h1>
+    <br>
+    <script>
+        function rojo(dato){
+            console.log("onmouseover cambioa a rojo");
+            dato.style.color = 'red';
+        }
+        function azul(dato){
+            console.log("onmouseout cambioa a azul");
+            dato.style.color = 'blue';
+        }
+        function verde(dato){
+            console.log("onmousedown cambioa a verde");
+            dato.style.color = 'green';
+        }
+        function amarillo(dato){
+            console.log("onmouseup cambioa a amarillo");
+            dato.style.color = 'yellow';
+        }
+        function morado(dato){
+            console.log("onclick cambioa a morado");
+            dato.style.color = 'purple';
+        }
+    </script>
+</body>
+</html>

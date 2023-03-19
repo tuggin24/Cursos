@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>On focus y on blur</title>
+</head>
+<body>
+    <h1">On focus y on blur</h1>
+    <br>
+    Nombre: <input type="text" onfocus="cambiar(this)" onblur="regresar(this)">
+    <br><br>
+    Apellido: <input type="text" onfocus="cambiar(this)" onblur="regresar(this)">
+    <script>
+        function cambiar(elemento){
+            elemento.style.background = 'yellow';
+        }
+        function regresar(elemento){
+            elemento.style.background = 'white';
+        }
+    </script>
+</body>
+</html>
