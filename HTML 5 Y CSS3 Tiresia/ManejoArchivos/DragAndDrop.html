@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Uso del Drag and Dro</title>
+      <link rel="stylesheet" href="./css/style.css">
+      <script type="text/javascript">
+         function init(){
+            const zona = document.getElementById('zona_arrastrar');
+            zona.addEventListener('drop', manejoDrop, true);
+            zona.addEventListener('dragover', manejoDragOver, true);
+
+
+         }
+
+         const manejoDrop = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+
+            let dataTransfer = e.dataTransfer;
+            let archivos = dataTransfer.files;
+            let informacion = '';
+
+            document.getElementById('salida').innerHTML = '';
+
+            for ( let arc of archivos ){
+               informacion += `<p>Nombre: ${arc.name}, Tamaño: ${arc.size}, Tipo: ${arc.type}</p>`;
+            }
+
+            document.getElementById('salida').innerHTML = informacion;
+         }
+
+         const manejoDragOver = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+         }
+
+
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Uso del Drag and Drop</h1>
+      </header>
+      <p>Arrastra tus archivos aqu&iacute;</p>
+      <div id="zona_arrastrar"></div>
+      <p>Resultado:</p>
+      <div id="salida"></div>
+   </body>
+</html>

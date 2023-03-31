@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Manejo de varios archivos</title>
+      <script type="text/javascript">
+         function init(){
+            const archivo = document.getElementById('archivos');
+            archivo.onchange = manejoArchivos;
+
+         }
+
+         const manejoArchivos = (e) => {
+            let archivos = e.target.files;
+            let info = '';
+            let index = 0;
+            for ( let arc of archivos ){
+               index++
+               info += `<p> ${index}) Nombre: ${arc.name}, Tamaño: ${arc.size}, Tipo: ${arc.type}`;
+            }
+            document.getElementById('salida').innerHTML = info;
+         }
+
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Seleccion de varios archivos</h1>
+      </header>
+      <form>
+         <label for="archivos">Selecciona un archivo</label>
+         <input name="archivos" id="archivos" type="file" multiple>
+         <div id="salida">
+
+         </div>
+      </form>
+   </body>
+</html>

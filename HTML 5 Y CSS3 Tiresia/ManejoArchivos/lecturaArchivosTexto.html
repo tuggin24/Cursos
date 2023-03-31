@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Lectura Archivos Texto HTML5</title>
+      <script type="text/javascript">
+         function init(){
+            const archivo = document.getElementById('archivo');
+            archivo.onchange = manejoArchivos;
+
+         }
+
+         const manejoArchivos = (e) => {
+            let archivo = e.target.files[0];
+
+            if( archivo.type !== 'text/plain' ){
+               alert('Se debe seleccionar un archivo de texto');
+               return;
+            }
+
+            let reader = new FileReader();
+            let resultado = '';
+            reader.onload = (e) => {
+               resultado = e.target.result;
+               document.getElementById('contenido').innerHTML = resultado;
+            }
+            reader.readAsText(archivo);
+         }
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Lectura Archivos Texto HTML5</h1>
+      </header>
+      <form>
+         <label for="archivo">Selecciona un archivo</label>
+         <input name="archivo" id="archivo" type="file">
+         <p>Contenido del archivo:</p>
+         <textarea cols="100" rows="15" id="contenido"></textarea>
+      </form>
+   </body>
+</html>

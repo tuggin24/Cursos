@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Lectura Imagenes HTML5</title>
+      <script type="text/javascript">
+         function init(){
+            const archivo = document.getElementById('archivo');
+            archivo.onchange = manejoArchivos;
+
+         }
+
+         const manejoArchivos = (e) => {
+            let archivo = e.target.files[0];
+
+            if( !archivo.type.match( 'image.*' ) ){
+               alert("Debe seleccionar una imagen");
+               return;
+            }
+
+            let reader = new FileReader();
+
+            reader.onload = (e) => {
+               let img = new Image();
+               //let img = document.createElement("img"); Este metodo sirve
+               img.src = e.target.result;
+               console.log(img);
+               document.getElementById('contenido').appendChild(img);
+            }
+
+            reader.readAsDataURL(archivo);
+         }
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Lectura Imagenes HTML5</h1>
+      </header>
+      <form>
+         <label for="archivo">Selecciona un archivo</label>
+         <input name="archivo" id="archivo" type="file">
+         <p>Contenido de la imagen:</p>
+         <div id="contenido"></div>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Manejo de archivos</title>
+      <script type="text/javascript">
+         function init(){
+            const archivo = document.getElementById('archivo');
+
+            if(window.DragEvent){
+               alert('Soporta drag and drop');
+            }else{
+               alert('NO Soporta drag and drop');
+            }
+            if(window.FileList){
+               alert('Soporta Filelist');
+            }else{
+               alert('NO Soporta Filelist');
+            }
+
+            archivo.onchange = manejoArchivos   ;
+
+         }
+
+         const manejoArchivos = (e) => {
+            alert('Has seleccioando: ' + e.target.files[0].name);
+         }
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Seleccion de archivos</h1>
+      </header>
+      <form>
+         <label for="archivo">Selecciona un archivo</label>
+         <input name="archivo" id="archivo" type="file" onchange="">
+      </form>
+   </body>
+</html>

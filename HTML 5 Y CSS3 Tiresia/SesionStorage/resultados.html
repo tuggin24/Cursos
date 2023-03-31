@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Resultado sessionStorage</title>
+   <script type="text/javascript">
+      function init(){
+         if( sessionStorage.getItem('lista') ){
+            document.getElementById('mensaje').innerHTML = `<h3>Datos almacenados en sessionStorage</h3>`;
+            document.getElementById('resultado').textContent = sessionStorage.getItem('lista');
+         }else{
+            document.getElementById('mensaje').textContent = 'No hay datos en sessionStorage';
+         }
+      }
+   </script>
+</head>
+<body onload="init()">
+   <header>
+      <h1>Resultado sessionStorage</h1>
+   </header>
+   
+   <div id="mensaje"></div>
+
+   <div id="resultado"></div>
+
+   <a href="index.html">Regresar</a>
+
+</body>
+</html>

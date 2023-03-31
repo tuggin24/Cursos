@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Sesion Storage</title>
+   <script type="text/javascript">
+      
+      function init(){
+         const lista = document.getElementById('lista');
+         lista.onblur = cambioLista;
+         document.getElementById('limpiar').onclick = limpiar;
+
+         if( sessionStorage.getItem('lista') ){
+            document.getElementById('mensaje').innerHTML = `<h3>Datos almacenados en sessionStorage</h3>`;
+            lista.innerHTML = sessionStorage.getItem('lista');
+            document.getElementById('resultado').textContent = sessionStorage.getItem('lista');
+         }else{
+            document.getElementById('mensaje').textContent = 'No hay datos en sessionStorage';
+         }
+
+      }
+
+      const cambioLista = () => {
+         console.log(lista.innerHTML);
+         sessionStorage.setItem('lista',lista.innerHTML);
+         location.reload();
+      }
+      
+      const limpiar = () => {
+         sessionStorage.removeItem('lista');
+         //sessionStorage.clear();
+         location.reload();
+      }
+
+   </script>
+</head>
+<body onload="init()">
+   <header>
+      <h1>Sesion Storage</h1>
+   </header>
+   <div>
+      <ul id="lista" contenteditable="true">
+         <li>
+         </li>
+      </ul>
+   </div>
+
+   <input type="button" id="limpiar" value="Limpiar">
+   
+   <div id="mensaje"></div>
+
+   <div id="resultado"></div>
+   <a href="resultados.html">ir a resultados</a>
+</body>
+</html>

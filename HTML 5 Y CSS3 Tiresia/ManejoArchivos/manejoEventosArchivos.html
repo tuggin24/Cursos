@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Manejo de Enventos Archivos HTML5</title>
+      <script type="text/javascript">
+         var reader = new FileReader();
+         var archivo;
+         var cargarArchivo;
+         function init(){
+            cargarArchivo = document.getElementById('archivo');
+            console.log("cargarArchivo->",cargarArchivo);
+            cargarArchivo.onchange = manejoArchivos;
+            document.getElementById('iniciarLectura').onclick = iniciarLectura;
+            document.getElementById('detenerLectura').onclick = detenerLectura;
+
+         }
+         
+         const reiniciarValores = (e) => {
+            document.getElementById('progreso').innerHTML = '';
+            document.getElementById('leyendo').textContent = '';
+            document.getElementById('progressbar').value = 0;
+         }
+
+         const manejoArchivos = (e) => {
+            reiniciarValores();
+            archivo = e.target.files[0];
+            console.log(archivo);
+            document.getElementById('nombreArchivo').innerHTML = `${archivo.name}, Tamano: ${archivo.size}`;
+         }
+
+         const iniciarLectura = (e) => {
+            reiniciarValores();
+            if( archivo != null ){
+               reader = new FileReader(archivo);
+
+               //Evento onloadstart
+               reader.onloadstart = (e) => {
+                  document.getElementById('progreso').innerHTML += `<p>Inic&iacute;o la lectura del archivo (onloadstart)</p>`;
+                  return;
+               };
+
+               //Evento onloadend
+               reader.onloadend = (e) => {
+                  document.getElementById('progreso').innerHTML += `<p>Termin&oacute; la lectura del archivo (onloadend)</p>`;
+               };
+
+               //Evento onload
+               reader.onload = (e) => {
+                  //document.getElementById('contador').innerHTML = `<p>Lectura del archivo: 100%</p>`;
+                  document.getElementById('progreso').innerHTML += `<p>Lectura del archivo completado (onload)</p>`;
+               };
+
+               //Evento onprogress
+               reader.onprogress = (e) => {
+                  if(e.lengthComputable){
+                     let calculo = Math.round( (e.loaded / e.total) * 100 );
+                     document.getElementById('leyendo').textContent = calculo;
+                     document.getElementById('progressbar').value = calculo;
+                  }
+               };
+
+               //Evento onerror
+               reader.onerror = (e) => {
+                  document.getElementById('progreso').innerHTML += `<p>Ocurrio un error en el archivo (onerror)</p>`;
+               }
+
+               //Evento onabort
+               reader.onabort = (e) => {
+                  document.getElementById('progreso').innerHTML += `<p>La lectura se abort&oacute; (onerror)</p>`;
+               }
+
+               //leemos el archivo
+               reader.readAsBinaryString(archivo);
+            }else{
+               alert('Debes seleccionar un archivo');
+            }
+            
+         }
+
+         const detenerLectura = (e) => {
+            if( reader ){
+               reader.abort();
+            }
+         }
+
+
+      </script>
+   </head>
+   <body onload="init()">
+      <header>
+         <h1>Manejo de Enventos Archivos HTML5</h1>
+      </header>
+      <form>
+         <label for="archivo">Selecciona un archivo</label>
+         <input name="archivo" id="archivo" type="file">
+      </form>
+      <p>Nombre Archivo: <span id="nombreArchivo"></span></p>
+      <p>Leer el contenido del archivo:</p>
+      <button id="iniciarLectura">Iniciar Lectura</button>
+      <button id="detenerLectura">Detener Lectura</button>
+      <p>Progreso de la lectura: <span id="leyendo"></span>%</p>
+      <progress id="progressbar" value="0" max="100"></progress>
+      <div id="progreso"></div>
+   </body>
+</html>

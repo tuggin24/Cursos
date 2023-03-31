@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Geolocalización</title>
+   <script type="text/javascript">
+      function init(){
+         // if(navigator.geolocation){
+         //    alert("Si soporta geolocalizacion");
+         // }else{
+         //    alert("No soporta geolocalizacion");
+         // }
+         navigator.geolocation.getCurrentPosition(mostrarCoordenadas);
+      }
+
+      const mostrarCoordenadas = (posicion) => {
+         let latitud = posicion.coords.latitude;
+         let longitud = posicion.coords.longitude;
+         document.getElementById('resultado').innerHTML = `<p>Latitud: ${latitud} Longitud: ${longitud} </p>`;
+      }
+   </script>
+</head>
+<body onload="init()">
+   <header>
+      <h1>Geolocalizaci&oacute;n</h1>
+   </header>
+   <div id="resultado"></div>
+</body>
+</html>
