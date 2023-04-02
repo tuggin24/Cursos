@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transferencias de datos en drag and drop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript">
+        function init(){
+            document.getElementById('img1').addEventListener( 'dragstart', manejoDragStart, false );
+            document.getElementById('img2').addEventListener( 'dragstart', manejoDragStart, false );
+            document.getElementById('img3').addEventListener( 'dragstart', manejoDragStart, false );
+            document.getElementById('img4').addEventListener( 'dragstart', manejoDragStart, false );
+
+            document.getElementById('zona_arrastrar').addEventListener( 'dragover', manejoDragOver, false );
+            document.getElementById('zona_arrastrar').addEventListener( 'drop', manejoDrop, false );
+            
+        }
+
+        const manejoDragStart = (e) => {
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento arrastrar ${e.target.id}`;
+            e.dataTransfer.setData( 'text/html', e.target.id );
+            console.log(e.dataTransfer.setData( 'text/html', e.target.id ))
+        }
+
+        const manejoDragOver = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento drag over ${e.target.id}`;
+        }
+
+        const manejoDrop = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento drop ${e.target.id}`;
+            
+            let idImgSel =  e.dataTransfer.getData('text/html');
+            document.getElementById('elementos').innerHTML = `Imagen seleccionada ${idImgSel}`;
+            e.target.appendChild( document.getElementById(idImgSel) );
+        }
+
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Transferencias de datos en drag and drop</h1>
+    </header>
+    <div id="msg_eventos"></div>
+    <figure>
+        <img id="img1" draggable="true" src="../imagenes/laptop.png">
+        <img id="img2" draggable="true" src="../imagenes/berenjena.png">
+        <img id="img3" draggable="true" src="../imagenes/monitor.png">
+        <img id="img4" draggable="true" src="../imagenes/pimiento.png">
+        <figcaption>Imágenes a arrastrar</figcaption>
+    </figure>
+    <div id="zona_arrastrar">Arrastre la imagen aquí</div>
+    <p>Elementos seleccionados</p>
+    <div id="elementos"></div>
+</body>
+</html>

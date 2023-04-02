@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Geolocalizaci�n</title>
+   <script type="text/javascript">
+      function init(){
+         // if(navigator.geolocation){
+         //    alert("Si soporta geolocalizacion");
+         // }else{
+         //    alert("No soporta geolocalizacion");
+         // }
+         navigator.geolocation.watchPosition( mostrarCoordenadas, mostrarErrores, { maximumAge: 1000, timeout: 300000, enableHighAccuracy: true } );
+      }
+
+      const mostrarCoordenadas = (posicion) => {
+         let latitud = posicion.coords.latitude;
+         let longitud = posicion.coords.longitude;
+         document.getElementById('resultado').innerHTML = `<p>Latitud: ${latitud} Longitud: ${longitud} </p>`;
+      }
+
+      const mostrarErrores = (e) => {
+         switch (e.code){
+            case e.PERMISSION_DENIED:
+               alert('Usuario denegado')
+            case e.POSITION:UNAVAILABLE:
+               alert('Posición no disponible')
+            case e.TIMEOUT:
+               alert('Tiempo de espera agotado')
+            default:
+               alert('Error desconocido')
+         }
+      }
+   </script>
+</head>
+<body onload="init()">
+   <header>
+      <h1>Geolocalizaci&oacute;n</h1>
+   </header>
+   <div id="resultado"></div>
+</body>
+</html>

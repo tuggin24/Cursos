@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detección de evento del drag and drop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript">
+        function init(){
+            // if(DragEvent){
+            //     alert('Si tiene el drag and drop');
+            // }else{
+            //     alert('NO tiene el drag and drop');
+            // }
+            document.getElementById('img1').addEventListener( 'dragstart', manejoDragStart, false );
+            document.getElementById('zona_arrastrar').addEventListener( 'dragover', manejoDragOver, false );
+            document.getElementById('zona_arrastrar').addEventListener( 'drop', manejoDrop, false );
+            
+        }
+
+        const manejoDragStart = (e) => {
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento arrastrar ${e.target.id}`;
+        }
+
+        const manejoDragOver = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento drag over ${e.target.id}`;
+        }
+
+        const manejoDrop = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            document.getElementById('msg_eventos').innerHTML = `Inicio del evento drop ${e.target.id}`;
+        }
+
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Detección de evento del drag and drop</h1>
+    </header>
+    <div id="msg_eventos"></div>
+    <img id="img1" draggable="true" src="../imagenes/laptop.png">
+    <div id="zona_arrastrar">Arrastre la imagen aquí</div>
+</body>
+</html>
