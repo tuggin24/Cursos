@@ -5,9 +5,12 @@
     <title>Rect&aacute;ngulos con canvas</title>
     <script type="text/javascript">
         function init(){
-            
-            
-            //document.getElementById('canvas1').innerHTML
+            let ctx = document.getElementById('canvas1').getContext('2d');
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 7;
+            ctx.strokeRect( 10, 10, 200, 100 );
+            ctx.fillStyle = 'green';
+            ctx.fillRect( 10, 10, 200, 100 );
         }
     </script>
 </head>
@@ -15,7 +18,7 @@
     <header>
         <h1>Rect&aacute;ngulos con canvas</h1>
     </header>
-    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">}
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
         Tu navegador no soporta Canvas
     </canvas>
 </body>

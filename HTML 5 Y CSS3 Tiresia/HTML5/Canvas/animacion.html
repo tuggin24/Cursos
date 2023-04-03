@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animaci&oacute;n con canvas</title>
+    <script type="text/javascript">
+      var x = 0, y = 150, ancho = 40;
+      var direccion = 'derecha';
+
+      var canvas;
+      var ctx;
+        function init(){
+         animar();
+        }
+
+        const animar = () => {
+         canvas = document.getElementById('canvas1');
+         ctx = canvas.getContext('2d');
+         ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height );
+         ctx.strokeStyle = 'yellow';
+         ctx.fillStyle = 'yellowgreen';
+         ctx.lineWidth = 5;
+         //console.log(x)
+         ctx.fillRect( x, y, ancho, ancho );
+         ctx.strokeRect( x, y, ancho, ancho );
+         
+         actualizarDibujo();
+         setTimeout( animar(), 2 );
+        }
+
+        const actualizarDibujo = () => {
+         definirDireccion();
+         if(direccion == 'derecha'){
+            x++;
+         }else{
+            x--;
+         }
+      }
+      
+      const definirDireccion = () => {
+         if(x == 0){
+            direccion = 'derecha';
+         }else if ( x === (ctx.canvas.width - ancho) ){
+            direccion = 'izquierda';
+         }
+      }
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Animaci&oacute;n con canvas</h1>
+    </header>
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
+        Tu navegador no soporta Canvas
+    </canvas>
+</body>
+</html>

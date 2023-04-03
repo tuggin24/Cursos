@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animaci&oacute;n con canvas</title>
+    <script type="text/javascript">
+      var x = 0;
+      var direccion = 'derecha', imagen;
+      var canvas, ctx;
+
+      function init(){
+         animar();
+      }
+
+      const animar = () => {
+         imagen = new Image()
+         canvas = document.getElementById('canvas1');
+         ctx = canvas.getContext('2d');
+
+         imagen.onload = () => {
+            ctx.clearRect( 0, 0, canvas.width, canvas.height );
+            ctx.drawImage( imagen, x, 0 );
+            actualizarDibujo();
+            setInterval( animar(), 1000 );
+         };
+         imagen.src = '../assets/portada.jpg';
+      }
+
+      const actualizarDibujo = () => {
+         x++;
+         if( x > ctx.canvas.width ){
+            x = 0;
+         }
+      }
+      
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Animaci&oacute;n con canvas</h1>
+    </header>
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
+        Tu navegador no soporta Canvas
+    </canvas>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Texto con canvas</title>
+    <script type="text/javascript">
+        function init(){
+            let canvas = document.getElementById('canvas1');
+            let ctx = canvas.getContext('2d');
+
+            let texto = 'Hola Mundo';
+            ctx.font = 'italic 50pt Calibri';
+            ctx.fillStyle = 'yellowgreen';
+            ctx.strokeStyle = 'black';
+            ctx.fillText( texto, 130, 100 );
+            ctx.strokeText( texto, 130, 100 );
+
+            //Gradientes
+            ctx.font = '50px Verdana';
+            let gradiente = ctx.createLinearGradient( 0, 0, canvas.width, 0 );
+            gradiente.addColorStop( '0', 'magenta' );
+            gradiente.addColorStop( '0.5', 'red' );
+            gradiente.addColorStop( '1', 'white' );
+
+            ctx.fillStyle = gradiente;
+            ctx.fillText( 'Hola con canvas', 40, 200 );
+            
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Texto con canvas</h1>
+    </header>
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
+        Tu navegador no soporta Canvas
+    </canvas>
+</body>
+</html>

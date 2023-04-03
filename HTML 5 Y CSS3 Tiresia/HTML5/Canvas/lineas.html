@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>L&iacute;neas con canvas</title>
+    <script type="text/javascript">
+        function init(){
+            let canvas = document.getElementById('canvas1');
+            let ctx = canvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.moveTo( 10, 10 );
+            ctx.lineTo( 100, 100 );
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+
+            ctx.lineTo( 200, 10 );
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+            ctx.save();
+
+            //Cambios
+            ctx.fillStyle = 'yellowgreen';
+            ctx.strokeStyle = 'yellow';
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo( 200, 200 );
+            ctx.lineTo( 200, 350 );
+            ctx.lineTo( 250, 350 );
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+           
+            
+            ctx.restore();
+            ctx.beginPath();
+            ctx.moveTo( 300, 200 );
+            ctx.lineTo( 400, 200 );
+            ctx.lineTo( 400, 250 );
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>L&iacute;neas con canvas</h1>
+    </header>
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
+        Tu navegador no soporta Canvas
+    </canvas>
+</body>
+</html>

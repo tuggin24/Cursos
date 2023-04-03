@@ -1,0 +1,89 @@
+/*****************Selectores Sibling*******************/
+
+/* selecciona los p cuyo padre es un div*/
+
+div > p{
+   color: red;
+   background-color: yellow;
+}
+
+/* selecciona los parrafos p adyacentes a div y deben tener el mismo nivel de jerarqui*/
+
+div + p{
+   color: blue;
+   background-color: yellow;
+}
+
+/* seleccionar los parrafos cuyo div es hermano y p debe estar despues del div. No es necesariamente adyacente */
+div ~ p{
+   color: green;
+   background-color: yellow;
+}
+
+/* selectores por atributos */
+
+/*Elmento a del atributo href que comience con http*/
+a[href^='http']{
+   color: red;
+}
+
+/*Elementos a del atributo href termine con .html*/
+a[href$='.html']{
+   color: green;
+}
+
+/*Elemento a del atributo href que termine en .pdf*/
+a[href$='.pdf']{
+   background: url(./images/pdf_icon.png) no-repeat right;
+   padding-right: 25px;
+   color: darkred;
+}
+
+/********************Selectores de tipo nchild************/
+
+h1:first-child{
+   color: red;
+}
+
+h1:last-of-type{
+   color: green;
+}
+
+li:first-of-type{
+   color: red;
+}
+
+/*Selecciona el segundo elemento*/
+li:nth-child(2){
+   color: teal;
+}
+
+/*Slecciona el terce elemento*/
+/* li:nth-child(3n){
+   color: yellow;
+} */
+
+/*Selecciona cada 3 elemento comenzando en 2do elemento*/
+/* li:nth-child(3n+2){
+   color: aqua;
+} */
+
+/*Selecciona los elemento de manera inversar comenzando en el 4to elemento*/
+/* li:nth-child(-1n+8){
+   color: chartreuse;
+} */
+
+/*Selecciona el 4to elemento contando en reversa*/
+/* li:nth-last-child(4){
+   color: tomato;
+} */
+
+/*Selecicona el 7to elemento contando en reversa*/
+/* li:nth-last-child(1n+7){
+   color: brown;
+} */
+
+/*Selecciona los ultimos 3 elemtos de la lista y los primeros 3*/
+li:nth-child(1n+8), li:nth-last-child(1n+8){
+   color: aqua;
+}

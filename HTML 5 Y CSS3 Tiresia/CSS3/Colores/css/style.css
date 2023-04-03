@@ -1,0 +1,124 @@
+.wrapper{
+   position: relative;
+   float: left;
+   left: 0px;
+   width: 700px;
+   margin-bottom: 10px;
+}
+
+.left1{
+   display: table;
+   position: relative;
+   float: left;
+   left: 5px;
+   width: 140px;
+   height: 100px;
+   border: 1px dashed grey;
+   padding: 5px;
+   text-align: center;
+   line-height: 20px;
+}
+
+.left2{
+   display: table;
+   position: relative;
+   float: left;
+   left: 15px;
+   width: 140px;
+   height: 100px;
+   border: 1px dashed grey;
+   padding: 5px;
+   text-align: center;
+   line-height: 20px;
+}
+
+.left3{
+   display: table;
+   position: relative;
+   float: left;
+   left: 25px;
+   width: 140px;
+   height: 100px;
+   border: 1px dashed grey;
+   padding: 5px;
+   text-align: center;
+   line-height: 20px;
+}
+
+.left4{
+   display: table;
+   position: relative;
+   float: left;
+   left: 35px;
+   width: 140px;
+   height: 100px;
+   border: 1px dashed grey;
+   padding: 5px;
+   text-align: center;
+   line-height: 20px;
+}
+
+body{
+   border-width: 0px;
+   padding: 0px;
+   margin: 0px;
+   font-size: 90%;
+   color: white;
+}
+
+h1{
+   color: red;
+}
+
+span{
+   display: table-cell;
+   vertical-align: middle;
+}
+
+/*Definicion de colores*/
+#div1{
+   background: #00FFFF;
+   color: grey;
+}
+
+#div2{
+   background: #FF0; /*Amarrillo*/
+   color: gray;
+}
+
+#div3{
+   background: rgb( 198, 226, 255 );
+   color: gray;
+}
+
+#div4{
+   background: rgb( 0%, 20%, 80% );
+   color: gray;
+}
+
+#div5{
+   background: chocolate;
+   color: gray;
+}
+
+#div6{
+   /*
+   1 color al 100%
+   0.5 color al 50%
+   0.0 color al 0%
+   */
+   background: rgb(198,226,255);/*Esto en caso que el navegador no soporte RGBA*/
+   background: rgba(198,226,255,0.5);
+   color: gray;
+}
+
+#div7{
+   background: rgb(0%,20%,80%);/*Esto en caso que el navegador no soporte RGBA*/
+   background: rgba(0%,20%,80%,0.5);
+   color: gray;
+}
+
+#div8{
+   background: hsl(270,90%,60%);
+   color: gray;
+}

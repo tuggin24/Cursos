@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circulos y Elipses con canvas</title>
+    <script type="text/javascript">
+        function init(){
+            let canvas = document.getElementById('canvas1');
+            let ctx = canvas.getContext('2d');
+
+            //Obtenemos el centro del canvas
+            let centroX = canvas.width / 2;
+            let centroY = canvas.height / 2;
+            let radio = 50;
+
+            //Dibujamos un circulo completo
+            ctx.beginPath();
+            ctx.arc( centroX, centroY, radio, 0, 2*Math.PI, false );
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'red'
+            ctx.stroke();
+            ctx.fillStyle = 'green';
+            ctx.fill();
+
+            //Cirulo 0.5 radian (90 grados) sentido de las manejillas del reloj
+            ctx.beginPath();
+            ctx.arc( 60, 60, radio, 0, 0.5*Math.PI )
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+
+            //Elipse 1 radian (180 grados)
+            ctx.beginPath();
+            ctx.arc( 300, 60, radio, 0, 1*Math.PI );
+            ctx.stroke();
+
+            //Elipse de 0.5 radian 
+            ctx.beginPath();
+            ctx.arc( 500, 60, radio, 0, -0.5*Math.PI, true );
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body onload="init()">
+    <header>
+        <h1>Circulos y Elipses con canvas</h1>
+    </header>
+    <canvas id="canvas1" width="600" height="400" style="border: dotted gray 1px;">
+        Tu navegador no soporta Canvas
+    </canvas>
+</body>
+</html>
