@@ -122,3 +122,63 @@ span{
    background: hsl(270,90%,60%);
    color: gray;
 }
+
+#div9{
+   background: hsl(270,90%,60%);
+   background: hsla(270,90%,60%,0.5);
+   color: gray;
+}
+
+#div10{
+   background: chocolate;
+   opacity: 0.5;
+   color: gray;
+}
+
+#div11{
+   color: gray;
+}
+
+img:hover{
+   opacity: 0.5;
+}
+
+#div12{
+   background: url('../images/globalmentoring.jpg') no-repeat;
+   background-color: rgb( 234, 98, 14 );
+}
+
+div.transbox{
+   background-color: #fff;
+   opacity: 0.6;
+}
+div.transbox p{
+   margin-top: 55px;
+   font-size: 80%;
+   color: #000;
+}
+
+#div13{
+   /*Safari o chrome*/
+   background: -webkit-gradient( linear, 0% 0%, 0% 100%, from( rgba( 109, 0, 25, 1 ) ), to( rgba( 200, 3, 31, 1 ) ) );
+   /*Estandar*/
+   background: linear-gradient( rgba( 200, 3, 41, 1 ) , rgba( 109, 0, 25, 1 ) );
+}
+
+#div14{
+   /*Estandar*/
+   background: linear-gradient( to right, #2F2727, #1A82F7, #2F2727, #1A82F7, #2F2727 );
+}
+
+#div15{
+   /*Estandar*/
+   background: radial-gradient( circle, red, orange );
+}
+
+#div16{
+   background: radial-gradient( closest-corner at 80% 20%, red, orange );
+}
+
+#div17{
+   background: linear-gradient(to bottom, #bfd255 0%,#8eb92a 30%,#72aa00 56%,#8eb92a 89%,#8eb92a 95%);
+}
