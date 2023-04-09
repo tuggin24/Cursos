@@ -1,0 +1,40 @@
+#contenedor div{
+    background: gold;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+
+    transition: all 0.5s ease;
+}
+
+#contenedor{
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    border: dashed gray;
+}
+
+#uno:hover{
+    transform: rotate( 45deg );
+    -webkit-transform: rotate( 45deg );
+    -moz-transform: rotate( 45deg );
+    background: red;
+}
+
+#dos:hover{
+    transform: translate( 0px, 15px );
+}
+
+#tres:hover{
+    transform: skew( 200deg );
+}
+
+#cuatro:hover{
+    transform: scale( 0.7 );
+}
+
+#cinco:hover{
+    transform: scale( 1.2 ) skew( 20deg );
+    transform-origin: center bottom;
+}

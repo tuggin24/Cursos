@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Formularios</title>
+</head>
+<body>
+    <header>
+        <h1>Formulario Web</h1>
+    </header>
+    <fieldset>
+        <legend>Pruebas</legend>
+        <form action="#" class="form1">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" placeholder="Ingresa el nombre" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Ingresa el email" required>
+
+            <label for="telefono">Tel&eacute;fono</label>
+            <input type="tel" name="telefono" placeholder="Ingresa el telefono" required>
+
+            <label for="pais">Pais</label>
+            <input type="text" name="pais" list="paises" placeholder="Ingresa el país">
+            <datalist id="paises">
+                <option>Colombia</option>
+            </datalist>
+
+            <label for="edad">Edad</label>
+            <input type="number" name="edad">
+
+            <label for="fecha">Fecha Nacimiento</label>
+            <input type="date" name="fecha">
+
+            <button type="submit">Enviar</button>
+            <button>
+                <a href="./mediaQuery.html">Regresar</a>
+            </button>
+
+        </form>
+    </fieldset>
+</body>
+</html>

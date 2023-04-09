@@ -1,0 +1,40 @@
+#contenedor div{
+    background: yellowgreen;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+
+#contenedor{
+    width: 600px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: flex;
+    border: dashed gray;
+}
+
+#uno{
+    border-radius: 10px;
+    border: dashed 2px gray;
+}
+
+#dos{
+    /*redondeado por un lado y casi recto por el otro*/
+    border-radius: 3px/15px;
+}
+
+#tres{
+    border-radius: 5px/80px;
+}
+
+#cuatro{
+    /*order: top-left, top-rigth, botton-right bottom-left*/
+    border-radius: 0 30px 0 30px;
+}
+
+#cinco{
+    border-radius: 10px;
+    /*sombra: right down blur color*/
+    box-shadow: 3px 3px 4px gray;
+}

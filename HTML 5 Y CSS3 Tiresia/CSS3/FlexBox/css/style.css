@@ -7,32 +7,15 @@
 
 #contenedor{
    width: 500px;
+   height: 300px;
    display: flex;
-   flex-direction: column;
+   flex-direction: row-reverse;
+   border: dashed gray;
+   align-items: center;
 
 }
 
-#uno{
-   -moz-box-flex: 1;
-   -webkit-box-flex: 1;
-}
-
-#dos{
-   -moz-box-flex: 1;
-   -webkit-box-flex: 1;
-}
-
-#tres{
-   -moz-box-flex: 1;
-   -webkit-box-flex: 1;
-}
-
-#cuatro{
-   -moz-box-flex: 1;
-   -webkit-box-flex: 1;
-}
-
-#cinco{
+#uno, #dos, #tres, #cuatro, #cinco{
    -moz-box-flex: 1;
    -webkit-box-flex: 1;
 }
