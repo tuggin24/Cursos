@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
+})
+export class NavComponent {
+
+
+    activeMenu = false;
+
+    toggleMenu(){
+        this.activeMenu = !this.activeMenu;
+        console.log('activeMenu',this.activeMenu);
+    }
+}
