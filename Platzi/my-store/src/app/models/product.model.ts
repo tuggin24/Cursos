@@ -5,15 +5,16 @@ export interface Product {
     images: string[];
     description: string;
     category: Category;
+    taxes?: number;
   }
 
 export interface Category {
-id: string;
-name: string
+  id: string;
+  name: string
 }
 
 export interface CreateProductDTO extends Omit< Product, 'id' | 'category' > {
-    categoryId: number;
+  categoryId: number;
 }
 
 export interface UpdateProductDTO extends Partial<CreateProductDTO>{

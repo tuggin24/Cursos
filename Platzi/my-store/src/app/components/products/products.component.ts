@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CreateProductDTO, Product, UpdateProductDTO } from '../../models/product.model';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
+import { switchMap } from 'rxjs/operators';
+import { zip } from 'rxjs';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-products',
@@ -27,6 +30,7 @@ export class ProductsComponent implements OnInit {
   };
   limit = 10;
   offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
 
   constructor(
@@ -51,12 +55,67 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string){
-    this.productsService.getProduct(id).
-    subscribe(data => {
-      console.log('data->',data);
-      this.productChosen = data;
-      this.toggleProductDetail();
-    } );
+    /**
+     * Metodo Obsoleto
+     * en el subscribe ya no se usa por aparte la respuesta positiva y negativo
+     * se usa next: positivo, error: negativo, complete: para saber que fue positivo creo
+     */
+    // this.productsService.getProduct(id).
+    // subscribe(data => {
+    //   console.log('data->',data);
+    //   this.productChosen = data;
+    //   this.toggleProductDetail();
+    // }, errorMsg => {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: errorMsg,
+    //     // footer: '<a href="">Why do I have this issue?</a>'
+    //   });
+    //   this.statusDetail = 'error';
+    // } );
+
+    this.productsService.getProduct(id).subscribe({
+      complete: () => { console.info('complete') },
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: e,
+        });
+        this.statusDetail = 'error';
+      },
+      next: (data) => {
+        console.log('data->',data);
+        this.productChosen = data;
+        this.toggleProductDetail();
+      }
+    });
+  }
+
+  /**
+   *
+   * Evitar el callback Hell
+   * De esta forma se puede llamar varias peticiones y que el codigo sea mantenible
+   * switchMap: Se usa para llamar funciones que dependende de otras
+   * zip: Se usa para llamar varias al mismo tiempo
+   */
+  readAndUpdate( id: string ){
+    this.productsService.getProduct(id)
+    .pipe(
+      switchMap( (producto) => this.productsService.update( producto.id, { title: 'change' } )  )
+      //Aca se puede agregar otro separado por coma: ,switchMap( (producto) => this.productsService.update( producto.id, { title: 'change' } )  )
+    )
+    .subscribe({
+      next: (rtaUpdate) => console.log('rtaUpdate',rtaUpdate),
+      error: () => {}
+    });
+
+    this.productsService.fetchReadAndUpdate( id, { title : 'Nuevo Titulo Producto' } )
+    .subscribe({
+      next: (r) => { console.log('r',r) },
+      error: () => {}
+    })
   }
 
   toggleProductDetail(){
@@ -83,7 +142,7 @@ export class ProductsComponent implements OnInit {
     };
     let id = this.productChosen.id;
     this.productsService.update( id, changes ).subscribe( data => {
-      console.log('update->', data)
+
       this.productChosen = data;
       const productIndex = this.products.findIndex( item => item.id === this.productChosen.id );
       this.products[productIndex] = data
@@ -100,7 +159,8 @@ export class ProductsComponent implements OnInit {
   }
 
   loadMore(){
-    this.productsService.getAllProducts( this.limit, this.offset ).subscribe( data => {
+    this.productsService.getAllProducts( this.limit, this.offset ).subscribe( (data: Product[]) => {
+      console.log('data->', data)
       this.products = this.products.concat( data );
       this.offset += this.limit;
     } )

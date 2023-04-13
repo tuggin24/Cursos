@@ -33,7 +33,8 @@
             </ul>
         </nav>
         <div class="info">
-            <div class="account">agustinloko24@hotmail.com</div>
+            <app-login class="account" *ngIf="emailUser === '' "></app-login>
+            <div *ngIf="emailUser !== '' " class="account">{{ emailUser }}</div>
             <div>
                 <a href="">
                     <img src="../../../assets/logo_yard_sale.svg" alt="logo">

@@ -21,7 +21,8 @@
     {{ 'hOLA MunDo' | vocalToNumber }}
 </p> -->
 
-<button (click)="createNewProduct()">Crear</button>
+<!-- <button (click)="createNewProduct()">Crear</button>
+<button (click)="onShowDetail('12322')">Detalle not found</button> -->
 <div class="products--grid">
   <app-product
     *ngFor="let product of products"
@@ -33,6 +34,7 @@
 </div>
 
 <div class="products-detail" [ngClass]="{active : showProductDetails }">
+  {{ statusDetail }}
   <div *ngIf="productChosen">
     <button (click)="toggleProductDetail()">Close</button>
     <h1>{{ productChosen.title }}</h1>
