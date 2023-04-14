@@ -1,4 +1,11 @@
 <app-nav></app-nav>
+<p>
+    <button (click)="donwloadPDF()">Descargar Pdf</button>
+</p>
+<p>
+    <input type="file" (change)="onUpload($event)" >
+    <img *ngIf="imgRta" [src]="imgRta">
+</p>
 <app-products></app-products>
 
 <!-- <p> <input type="text" [(ngModel)]="imgParent"> </p>
