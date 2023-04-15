@@ -16,7 +16,15 @@ import { VocalToNumberPipe } from './pipes/vocal-to-number.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { LoginComponent } from './components/login/login.component';
 import { TimeInterceptor } from './interceptors/time.interceptor'
-import { TokenInterceptor } from './interceptors/token.interceptor'
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +37,15 @@ import { TokenInterceptor } from './interceptors/token.interceptor'
     TimeAgoPipe,
     VocalToNumberPipe,
     HighlightDirective,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MycartComponent,
+    RegisterComponent,
+    RecoveryComponent,
+    ProfileComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
