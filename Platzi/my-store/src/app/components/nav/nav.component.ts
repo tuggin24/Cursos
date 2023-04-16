@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store.service'
 import { AuthService } from '../../services/auth.service'
+import { CategoriesService } from '../../services/categories.service'
 import { Subscription } from 'rxjs';
+import { Category } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-nav',
@@ -16,10 +18,12 @@ export class NavComponent implements OnInit{
   emailSub$!: Subscription;
   counter = 0;
   emailUser: string = '';
+  categories: Category[] = [];
 
   constructor(
     private storeService: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private categoriesService: CategoriesService
   ){
 
   }
@@ -37,10 +41,21 @@ export class NavComponent implements OnInit{
     this.emailSub$ = this.authService.email$.subscribe( (email) => {
       this.emailUser = email;
     })
+
+    this.getAllCategories();
   }
 
   ngOnDestroy(): void {
     this.sub$.unsubscribe();
     this.emailSub$.unsubscribe();
+  }
+
+  getAllCategories(){
+    this.categoriesService.getAll()
+    .subscribe({
+      next: (res) => {
+        this.categories = res;
+      }
+    })
   }
 }

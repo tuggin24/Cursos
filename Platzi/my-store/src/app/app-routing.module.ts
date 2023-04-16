@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path: 'login', component: LoginPageComponent
+  },
+  {
+    path: 'product/:id', component: ProductDetailComponent
   },
   {
     path: '**', component: NotFoundComponent

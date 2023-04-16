@@ -17,6 +17,12 @@ export class ProductsComponent implements OnInit {
   total = 0;
   @Input() products: Product[] = [];
   @Output() load = new EventEmitter();
+  @Input() 
+  set productId(id: string | null ){
+    if(id){
+      this.onShowDetail(id);
+    }
+  }
   showProductDetails = false;
   productChosen: Product = {
     id: '',
@@ -89,7 +95,10 @@ export class ProductsComponent implements OnInit {
       next: (data) => {
         console.log('data->',data);
         this.productChosen = data;
-        this.toggleProductDetail();
+        if(!this.showProductDetails){
+          this.showProductDetails = true;
+        }
+        // this.toggleProductDetail();
       }
     });
   }
