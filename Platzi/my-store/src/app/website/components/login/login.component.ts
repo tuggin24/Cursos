@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { UsersService } from '../../services/users.service';
-import { CreateUserDTO } from '../../models/user.model'
-import { DataAuth, Auth } from '../../models/auth.model'
+import { AuthService } from '../../../services/auth.service';
+import { UsersService } from '../../../services/users.service';
+import { CreateUserDTO } from '../../../models/user.model'
+import { DataAuth, Auth } from '../../../models/auth.model'
 import { switchMap } from 'rxjs';
 
 @Component({

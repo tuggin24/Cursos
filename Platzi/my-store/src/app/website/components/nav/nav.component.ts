@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../../services/store.service'
-import { AuthService } from '../../services/auth.service'
-import { CategoriesService } from '../../services/categories.service'
+import { StoreService } from '../../../services/store.service'
+import { AuthService } from '../../../services/auth.service'
+import { CategoriesService } from '../../../services/categories.service'
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/product.model';
 
