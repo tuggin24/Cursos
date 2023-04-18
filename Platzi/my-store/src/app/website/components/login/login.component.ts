@@ -14,13 +14,14 @@ export class LoginComponent {
 
   newUser: CreateUserDTO = {
     name: 'agus',
-    email: 'agustin2@gmail.com',
-    password: '123456'
+    email: 'agustin@gmail.com',
+    password: '123456',
+    role: 'customer'
   };
 
   loginUser: DataAuth = {
-    email: 'agustin2@gmail.com',
-    password: '123456'
+    email: 'john@mail.com',
+    password: 'changeme'
   }
 
   token = '';
@@ -54,7 +55,7 @@ export class LoginComponent {
   loginAndGet(){
     this.authService.login( this.loginUser )
     .pipe(
-      switchMap( () => this.authService.newProfile() )
+      switchMap( () => this.authService.getProfile() )
     )
     .subscribe({
       next: (res) => {

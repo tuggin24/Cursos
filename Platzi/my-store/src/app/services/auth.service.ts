@@ -43,7 +43,7 @@ export class AuthService {
     });
   }
 
-  newProfile(){
+  getProfile(){
     return this.http.get<User>(`${this.url}/profile`);
   }
 }

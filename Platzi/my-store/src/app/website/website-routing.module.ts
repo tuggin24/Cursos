@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { AuthGuard } from '../guards/auth.guard'
 
 const routes: Routes = [
   {
@@ -22,7 +23,10 @@ const routes: Routes = [
       },
       {
         path: 'category',
-        loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryModule )
+        loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryModule ),
+        data: {
+          preload: true
+        }
       },
       {
         path: 'cart', component: MycartComponent
@@ -34,7 +38,7 @@ const routes: Routes = [
         path: 'recovery', component: RecoveryComponent
       },
       {
-        path: 'profile', component: ProfileComponent
+        path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]
       },
       {
         path: 'login', component: LoginPageComponent
