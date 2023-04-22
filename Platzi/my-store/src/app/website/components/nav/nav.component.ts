@@ -4,6 +4,8 @@ import { AuthService } from '../../../services/auth.service'
 import { CategoriesService } from '../../../services/categories.service'
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/product.model';
+import { Router } from '@angular/router'
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-nav',
@@ -17,13 +19,15 @@ export class NavComponent implements OnInit{
   sub$!: Subscription;
   emailSub$!: Subscription;
   counter = 0;
-  emailUser: string = '';
+  emailUser: string | undefined = undefined;
   categories: Category[] = [];
+  profile: User | null = null;
 
   constructor(
     private storeService: StoreService,
     private authService: AuthService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ){
 
   }
@@ -43,6 +47,16 @@ export class NavComponent implements OnInit{
     })
 
     this.getAllCategories();
+
+    this.authService.user$
+    .subscribe((user) => {
+      this.profile = user;
+      this.emailUser = this.profile?.email;
+    })
+
+    if(this.profile){
+      console.log('EXISTE');
+    }
   }
 
   ngOnDestroy(): void {
@@ -57,5 +71,11 @@ export class NavComponent implements OnInit{
         this.categories = res;
       }
     })
+  }
+
+  logout(){
+    this.authService.logout();
+    this.profile = null;
+    this.router.navigate(['/home']);
   }
 }

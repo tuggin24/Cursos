@@ -1,16 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UsersService } from '../../../services/users.service';
 import { CreateUserDTO } from '../../../models/user.model'
 import { DataAuth, Auth } from '../../../models/auth.model'
 import { switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   newUser: CreateUserDTO = {
     name: 'agus',
@@ -20,8 +21,8 @@ export class LoginComponent {
   };
 
   loginUser: DataAuth = {
-    email: 'john@mail.com',
-    password: 'changeme'
+    email: 'admin@mail.com',
+    password: 'admin123'
   }
 
   token = '';
@@ -29,8 +30,12 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private usersService: UsersService,
+    private router:Router
   ){
 
+  }
+
+  ngOnInit(): void {
   }
 
   createUser(){
@@ -59,7 +64,7 @@ export class LoginComponent {
     )
     .subscribe({
       next: (res) => {
-        this.authService.email.next(res.email);
+        this.router.navigate(['/profile']);
       },
       error: () => {}
     })

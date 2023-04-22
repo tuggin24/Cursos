@@ -1,22 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Product } from './models/product.model'
-import { FilesService } from '../app/services/files.service'
+import { FilesService } from '../app/services/files.service';
+import { AuthService } from '../app/services/auth.service';
+import { TokenService } from '../app/services/token.service'
 
 @Component({
   selector: 'app-root',
   template: `<router-outlet></router-outlet>`,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit{
   imgParent = '';
   //imgParent = 'https://www.w3schools.com/howto/img_avatar.png';
   showImg = true;
   imgRta = '';
 
   constructor(
-    private filesService: FilesService
+    private filesService: FilesService,
+    private authService: AuthService,
+    private tokenService: TokenService
   ){
 
+    const token = this.tokenService.getToken();
+    if( token ){
+      this.authService.getProfile()
+      .subscribe();
+      console.log('El app llamo a profile');
+    }
+  }
+  ngOnInit(): void {
+  }
+  ngAfterViewInit(){
+  
   }
 
   onLoaded(img:string){

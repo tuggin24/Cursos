@@ -39,10 +39,13 @@
             </ul>
         </nav>
         <div class="info">
-            <app-login class="account" *ngIf="emailUser === '' "></app-login>
-            <div *ngIf="emailUser !== '' " class="account">
+            <app-login class="account" *ngIf="!profile; else elseBlock "></app-login>
+            <div *ngIf="profile" class="account">
                 <a routerLink="/profile">{{ emailUser }}</a>
             </div>
+            <ng-template #elseBlock>
+                <button (click)="logout()">Logout</button>
+            </ng-template>
             <div>
                 <a href="">
                     <img src="../../../assets/logo_yard_sale.svg" alt="logo">
