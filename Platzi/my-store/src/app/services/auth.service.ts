@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment'
 import { DataAuth, Auth } from '../models/auth.model'
 import { User } from '../models/user.model'
 import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,9 @@ export class AuthService {
 
   public email = new BehaviorSubject<string>('');
   email$ = this.email.asObservable();
+
+  private user = new BehaviorSubject<User | null >(null);
+  user$ = this.user.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -43,7 +46,17 @@ export class AuthService {
     });
   }
 
-  newProfile(){
-    return this.http.get<User>(`${this.url}/profile`);
+  getProfile(){
+    return this.http.get<User>(`${this.url}/profile`)
+    .pipe(
+      tap((user) => {
+        this.user.next(user);
+        console.log('UserGetProfile 2', this.user.value);
+      })
+    );
+  }
+
+  logout(){
+    this.tokenService.removeToken();
   }
 }
