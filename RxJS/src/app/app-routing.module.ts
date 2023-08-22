@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RxjsComponent } from './components/rxjs/rxjs.component';
-import { FromEventComponent } from './components/from-event/from-event.component';
-import { MapFilterComponent } from './components/map-filter/map-filter.component';
+import { FromEventComponent } from './componentsPlatzi/from-event/from-event.component';
+import { ObservableComponent } from './componentsPlatzi/observable/observable.component';
+import { BaseComponent } from './plaziWordle/components/base/base.component';
 
 const routes: Routes = [
-  {
-    path: '', component: RxjsComponent
-  },
   {
     path: 'fromEvent', component: FromEventComponent
   },
   {
-    path: 'mapFilter', component: MapFilterComponent
+    path: 'observable', component: ObservableComponent
+  },
+  {
+    path: 'wordle', component: BaseComponent
   }
 ];
 

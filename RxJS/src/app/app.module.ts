@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RxjsComponent } from './components/rxjs/rxjs.component';
-import { FromEventComponent } from './components/from-event/from-event.component';
-import { MapFilterComponent } from './components/map-filter/map-filter.component';
+import { FromEventComponent } from './componentsPlatzi/from-event/from-event.component';
+import { ObservableComponent } from './componentsPlatzi/observable/observable.component';
+import { BaseComponent } from './plaziWordle/components/base/base.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RxjsComponent,
     FromEventComponent,
-    MapFilterComponent
+    ObservableComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
