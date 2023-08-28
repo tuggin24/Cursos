@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FromEventComponent } from './componentsPlatzi/from-event/from-event.component';
 import { ObservableComponent } from './componentsPlatzi/observable/observable.component';
 import { BaseComponent } from './plaziWordle/components/base/base.component';
+import { PlatziBoardComponent } from './platzi-board/platzi-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FromEventComponent,
     ObservableComponent,
-    BaseComponent
+    BaseComponent,
+    PlatziBoardComponent
   ],
   imports: [
     BrowserModule,
